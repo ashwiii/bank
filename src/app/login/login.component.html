@@ -5,13 +5,13 @@
     <h2>Sign in</h2>
     <div class="input-icons">
         <i class="fa-solid fa-envelope-open" id="pas"></i>
-        <input class="input-field" type="text"[placeholder]="acnt" (change)="acnoChange($event)" id="accno">
+        <input class="input-field" type="text"[placeholder]="acnt" #acno id="accno">
         <br><br>
         <i class="fa-solid fa-lock" id="pas"></i>
-        <input class="input-field" type="password" placeholder="Password" (change)="passchange($event)" id="pass" ><i class="bi bi-eye-slash"
+        <input class="input-field" type="password" placeholder="Password" #psw id="pass" ><i class="bi bi-eye-slash"
         id="pasi"></i>
         <br><br>
-        <button type="button" (click)="login()">Sign in</button>
+        <button type="button" (click)="login(acno,psw)">Sign in</button>
         <br>
         <br>
         <p>Don't have an account ? <a href="./register.html" id="link">CREATE</a></p>

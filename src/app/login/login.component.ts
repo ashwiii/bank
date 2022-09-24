@@ -23,9 +23,33 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  login(){
-    var acnum=this.acno
-    var psw=this.psw
+  // login(){
+  //   var acnum=this.acno
+  //   var psw=this.psw
+  //   let userDetails=this.userDetails
+  //   if(acnum in userDetails){
+  //     if(psw==userDetails[acnum]['password']){
+  //       alert('login success')
+  //     }
+  //     else{
+  //       alert('user not exist')
+  //     }
+
+  //   }
+
+
+  login(a:any,b:any){
+
+       console.log(a.value);
+       console.log(b.value);
+
+       var acnum=a.value
+       var psw=b.value
+       
+       
+
+    // var acnum=this.acno
+    // var psw=this.psw
     let userDetails=this.userDetails
     if(acnum in userDetails){
       if(psw==userDetails[acnum]['password']){
