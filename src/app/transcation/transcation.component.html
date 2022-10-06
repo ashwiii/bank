@@ -1,0 +1,23 @@
+<!-- structural directive   -ngFor-  can apply directly in html to access -->
+
+
+<br>
+<br>
+<br>
+<br>
+<table border="5px" class="center">
+    <h2>Transaction History</h2>
+    <tr>
+        <td>Type</td>
+        <td>Amount</td>
+    </tr>
+    <tr *ngFor="let i of transcation">
+        <td>{{i.type}}</td>
+        <td>{{i.amount}}</td>
+    </tr>
+    
+   
+        <button  type="button" (click)="home()">home</button>
+   
+</table>
+

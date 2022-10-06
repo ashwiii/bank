@@ -1,0 +1,48 @@
+<div class="p p-4 mt-5 text-black">
+<h1>welcome {{user}}</h1>
+</div>
+<div class="p-2 mt-2 ms-4">
+<a routerLink="/transcation">transcation history</a>
+</div>
+
+<form action="" (ngSubmit)="deposit()" class="for">
+    <h2>Deposit</h2>
+    <div>
+        <label for="accountnumber">Account Number</label>
+        <input name="accountnumber" type="text" placeholder="Enter Accountnumber" id="acno" [(ngModel)]="acno" >
+    </div>
+    <br>
+    
+    <div><label for="Pass">Password</label>
+        <input name="password" type="text" placeholder="Password" [(ngModel)]="pswrd" id="psw" >
+    </div>
+    <br>
+    <div>
+        <label for="Amount">Ddeposit-Amount</label>
+        <input name="Amount" type="text" [(ngModel)]="amt" id="amt" placeholder="Deposit Amount" >
+    </div>
+    <br>
+    <button  type="submit" >Deposit</button>
+</form>
+
+
+
+<form action="" (ngSubmit)="withdraw()" class="for">
+    <h2>withdraw</h2>
+    <div>
+        <label for="accountnumber">Account Number</label>
+        <input name="accountnumber" type="text" placeholder="Enter Accountnumber" id="acno1" [(ngModel)]="acno1" >
+    </div>
+    <br>
+    
+    <div><label for="Pass">Password</label>
+        <input name="password" type="text" placeholder="Password" [(ngModel)]="pswrd1" id="psw1" >
+    </div>
+    <br>
+    <div>
+        <label for="Amount">withdraw-Amount</label>
+        <input name="Amount" type="text" [(ngModel)]="amt1" id="amt1" placeholder="withdraw Amount" >
+    </div>
+    <br>
+    <button  type="submit" >withdraw</button>
+</form>

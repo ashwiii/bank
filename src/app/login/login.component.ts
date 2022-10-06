@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
+// import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,70 +10,64 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  aim="your perfect banking partner"
-  acnt='enter your acnt no'
+  aim = "your perfect banking partner"
+  acnt = 'enter your acnt no'
 
-  acno=''
-  psw=''
+  acno = ''
+  psw = ''
 
-  userDetails:any={
-    1000:{acno:1000,username:"amal",password:123,balance:100000},
-    1001:{acno:1001,username:"anu",password:123,balance:10003435},
-    1002:{acno:1002,username:"joyal",password:123,balance:10068675}
-  }
+  
 
-  constructor() { }
+  constructor(private router:Router,private ds:DataService ) { }
 
   ngOnInit(): void {
   }
-  // login(){
-  //   var acnum=this.acno
-  //   var psw=this.psw
-  //   let userDetails=this.userDetails
-  //   if(acnum in userDetails){
-  //     if(psw==userDetails[acnum]['password']){
-  //       alert('login success')
-  //     }
-  //     else{
-  //       alert('user not exist')
-  //     }
+  login() {
+    var acnum = this.acno
+    var psw = this.psw
 
-  //   }
-
-
-  login(a:any,b:any){
-
-       console.log(a.value);
-       console.log(b.value);
-
-       var acnum=a.value
-       var psw=b.value
-       
-       
-
-    // var acnum=this.acno
-    // var psw=this.psw
-    let userDetails=this.userDetails
-    if(acnum in userDetails){
-      if(psw==userDetails[acnum]['password']){
-        alert('login success')
-      }
-      else{
-        alert('user not exist')
-      }
-
-    }
-    
-    alert('success')
+   const result= this.ds.login(acnum,psw)
+   if(result){
+     alert('login success')
+     this.router.navigateByUrl('dashboard')
+   }
+   
   }
-  acnoChange(event:any){
-    this.acno=event.target.value
-    
 
-  }
-  passchange(event:any){
-    this.psw=event.target.value
-  }
+    // login(a:any,b:any){
+
+    //      console.log(a.value);
+    //      console.log(b.value);
+
+    //      var acnum=a.value
+    //      var psw=b.value
+
+
+
+    //   // var acnum=this.acno
+    //   // var psw=this.psw
+    //   let userDetails=this.userDetails
+    //   if(acnum in userDetails){
+    //     if(psw==userDetails[acnum]['password']){
+    //       alert('login success')
+    //     }
+    //     else{
+    //       alert('user not exist')
+    //     }
+
+    //   }
+
+    //   alert('success')
+    // }
+    // acnoChange(event:any){
+    //   this.acno=event.target.value
+
+
+    // }
+    // passchange(event:any){
+    //   this.psw=event.target.value
+    // }
+
 
 
 }
