@@ -34,7 +34,18 @@ validating inputs
 
 > Angular form validation
       1.template driven form
+
       2.model driven form
+         2.2. reactive form
+            -form group
+            -array
+            -controller
+        
+
+
+
+
+>local storage
 
 
 

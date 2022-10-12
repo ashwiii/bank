@@ -16,15 +16,46 @@ export class DataService {
   }
 
 
-  constructor() { }
+  constructor() { 
+    this.getDetails()
+  }
+
+
+  saveDetails(){
+    if(this.userDetails){
+      localStorage.setItem('database',JSON.stringify(this.userDetails))
+    }
+    if(this.currentuser){
+      localStorage.setItem('currentuser',JSON.stringify(this.currentuser))
+    }
+    if(this.currentAcno){
+      localStorage.setItem('currentAcno',JSON.stringify(this.currentAcno))
+    }
+  }
+  getDetails(){
+    if(localStorage.getItem('database')){
+      this.userDetails=JSON.parse(localStorage.getItem('database') || '')
+    }
+    if(localStorage.getItem('currentuser')){
+      this.currentuser=JSON.parse(localStorage.getItem('currentuser') || '')
+    }
+    if(localStorage.getItem('currentAcno')){
+      this.currentAcno=JSON.parse(localStorage.getItem('currentAcno') || '')
+    }
+  }
+
+
   register(acno:any,username:any,password:any){
     let userDetails=this.userDetails
     if(acno in userDetails){
       return false
     }
     else{
-      userDetails[acno]={acno,username,password,balance:0}
+      userDetails[acno]={acno,username,password,balance:0,transcations:[]}
+
       // console.log(userDetails);
+
+      this.saveDetails()
       
       return true
     }
@@ -36,6 +67,8 @@ export class DataService {
       if (psw == userDetails[acnum]['password']) {
         this.currentuser=userDetails[acnum]['username']
         this.currentAcno=acnum
+        this.saveDetails()
+
         return true
 
       }
@@ -57,6 +90,8 @@ export class DataService {
         if (pswrd == userDetails[acno]['password']) {
           userDetails[acno]['balance'] += amount
           userDetails[acno]['transcations'].push({type:'CREDIT',amount})
+          this.saveDetails()
+
           return userDetails[acno]['balance']
         }
         else {
@@ -75,6 +110,8 @@ export class DataService {
         if(pswrd1==userDetails[acno1]['password']){
           if(amount>=userDetails[acno1]['balance']){
             alert('insufficient balance')
+            this.saveDetails()
+
             return false
 
           }

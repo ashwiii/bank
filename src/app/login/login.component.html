@@ -1,16 +1,20 @@
 <div class="text-white ms-5 p-3"><h5>{{aim}}</h5></div>
 
-<form (ngSubmit)="login()" action="" class="login1">
+<form (ngSubmit)="login()" action="" class="login1" [formGroup]="loginForm">
 
     <h2>Sign in</h2>
     <div class="input-icons">
         <i class="fa-solid fa-envelope-open" id="pas"></i>
-        <input name="hjh" class="input-field" type="text"[placeholder]="acnt" [(ngModel)]="acno"  id="accno">
+        <input name="hjh" class="input-field" type="text"[placeholder]="acnt" formControlName ="acnum"  id="accno">
         <br><br>
+        <div *ngIf="this.loginForm.get('acnum')?.errors&&this.loginForm.get('acnum')?.touched" class="text-danger"><p>invalid accountnumber</p></div>
+
         <i class="fa-solid fa-lock" id="pas"></i>
-        <input name="jhh" class="input-field" type="password" placeholder="Password" [(ngModel)]="psw" id="pass" ><i class="bi bi-eye-slash"
+        <input name="jhh" class="input-field" type="password" placeholder="Password" formControlName="psw" id="pass" ><i class="bi bi-eye-slash"
         id="pasi"></i>
         <br><br>
+        <div *ngIf="this.loginForm.get('psw')?.errors&&this.loginForm.get('psw')?.touched" class="text-danger"><p>invalid password</p></div>
+
         <button type="submit" >Sign in</button>
         <br>
         <br>

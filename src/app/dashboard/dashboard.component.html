@@ -1,11 +1,17 @@
 <div class="p p-4 mt-5 text-black">
+
+
+    <div><h3>system date and time {{sDetails | date:'short'}}</h3></div>
+
+
 <h1>welcome {{user}}</h1>
 </div>
 <div class="p-2 mt-2 ms-4">
 <a routerLink="/transcation">transcation history</a>
 </div>
+<button class="btn btn-danger ms-5" id="c1" (click)="logout()">logout</button>
 
-<form action="" (ngSubmit)="deposit()" class="for">
+<form action="" [ngClass]="acntnum?'style1':''" (ngSubmit)="deposit()" class="for">
     <h2>Deposit</h2>
     <div>
         <label for="accountnumber">Account Number</label>
@@ -27,7 +33,7 @@
 
 
 
-<form action="" (ngSubmit)="withdraw()" class="for">
+<form action=""  [ngClass]="acntnum?'style1':''" (ngSubmit)="withdraw()" class="for">
     <h2>withdraw</h2>
     <div>
         <label for="accountnumber">Account Number</label>
@@ -46,3 +52,7 @@
     <br>
     <button  type="submit" >withdraw</button>
 </form>
+<app-deleteconform (onCancel)="oncancelnew()" [item]="acntnum"></app-deleteconform>
+
+<!-- <a href="" routerLink=''>logout</a> -->
+<button class="btn btn-danger" (click)="deleteconfirm()">delete</button>
